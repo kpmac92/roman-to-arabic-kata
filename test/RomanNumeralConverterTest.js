@@ -28,5 +28,9 @@ describe('RomanNumeralConverter.js', function() {
         it('should return 9 when given IX', function() {
             equal(subject.convert('IX'), 9);
         })
+
+        it('should return 12 when given XII', function() {
+            equal(subject.convert('XII'), 12);
+        })
     })
 })
