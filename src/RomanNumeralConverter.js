@@ -1,16 +1,23 @@
 export default class RomanNumeralConverter{
 
-    convert(numeral) {
-        
-        if(numeral == 'IV') {
-            return 4;
-        } else if(numeral.includes('V')) {
-            return 5 + this.countIs(numeral);
-        }
-        return numeral.length;
-    }
+    specialCharMap = new Map([["V", 5], ["X", 10]]);
 
-    countIs(numeral) {
-        return numeral.split('I').length - 1;
+    convert(numeral) {
+        var value = 0;
+        var charArray = numeral.split('');
+
+        for(var i = 0; i < charArray.length; i++) {
+            let char = charArray[i];
+            if(this.specialCharMap.has(char)) {
+                value += this.specialCharMap.get(char);
+            } else if(char == 'I' && this.specialCharMap.has(charArray[i + 1])) {
+                value--;
+            }
+            else {
+                value++;
+            }
+        }
+
+        return value;
     }
 }
