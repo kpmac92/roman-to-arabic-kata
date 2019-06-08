@@ -32,5 +32,26 @@ describe('RomanNumeralConverter.js', function() {
         it('should return 12 when given XII', function() {
             equal(subject.convert('XII'), 12);
         })
+
+        it('should return 29 when given XXIX', function() {
+            equal(subject.convert('XXIX'), 29);
+        })
+
+        it('should return 24 when given XXIV', function() {
+            equal(subject.convert('XXIV'), 24);
+        })
+
+        it('should return 44 when given XLIV', function() {
+            equal(subject.convert('XLIV'), 44);
+        })
+
+        it('should return 59 when given LIX', function() {
+            equal(subject.convert('LIX'), 59);
+        })
+
+        it('should return 99 when given XCIX', function() {
+            equal(subject.convert('XCIX'), 99);
+        })
+        
     })
 })

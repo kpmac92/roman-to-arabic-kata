@@ -1,6 +1,7 @@
 export default class RomanNumeralConverter{
 
-    specialCharMap = new Map([["V", 5], ["X", 10]]);
+    specialCharMap = new Map([["I", 1],["V", 5], ["X", 10], ["L", 50], ["C", 100]]);
+    subtractionChars = ["I", "X", "C"];
 
     convert(numeral) {
         var value = 0;
@@ -9,13 +10,11 @@ export default class RomanNumeralConverter{
         for(var i = 0; i < charArray.length; i++) {
             let char = charArray[i];
             let nextChar = charArray[i+1];
-            if(this.specialCharMap.has(char)) {
-                value += this.specialCharMap.get(char);
-            } else if(this.isSubtraction(char, nextChar)) {
-                value--;
-            }
-            else {
-                value++;
+            
+            if(this.isSubtraction(char, nextChar)) {
+                value -= this.specialCharMap.get(char);
+            } else {
+                value += this.specialCharMap.get(char);;
             }
         }
 
@@ -23,6 +22,6 @@ export default class RomanNumeralConverter{
     }
 
     isSubtraction(char, nextChar) {
-        return char == 'I' && this.specialCharMap.has(nextChar);
+        return this.subtractionChars.includes(char) && this.specialCharMap.get(nextChar) > this.specialCharMap.get(char);
     }
 }
