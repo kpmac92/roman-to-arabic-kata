@@ -52,6 +52,13 @@ describe('RomanNumeralConverter.js', function() {
         it('should return 99 when given XCIX', function() {
             equal(subject.convert('XCIX'), 99);
         })
+
+        it('should return 459 when given CDLIX', function() {
+            equal(subject.convert('CDLIX'), 459);
+        })
         
+        it('should return 2948 when given MMCMXLVIII', function() {
+            equal(subject.convert('MMCMXLVIII'), 2948);
+        })
     })
 })
